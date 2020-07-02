@@ -6,46 +6,50 @@ ui <- shinyUI(pageWithSidebar(
                 dateRangeInput(inputId = "dateRange",
                                label = "Date Range",
                                start = "2013-04-01",
-                               max = Sys.Date())
-              ),
-              sliderInput(inputId = "minimumTime",
+                               max = Sys.Date()
+                ),
+
+                sliderInput(inputId = "minimumTime",
                           label = "Hours of interest - minimum",
                           min = 0,
                           max = 23,
                           value = 0,
                           step = 1
-              ),
-              sliderInput(inputId = "maximumTime",
+                ),
+
+                sliderInput(inputId = "maximumTime",
                           label = "Hours of interest - maximum",
                           min = 0,
                           max = 23,
                           value = 23,
                           step = 1
-              ),
-              checkboxInput(inputId = "smoother",
+                ),
+
+                checkboxInput(inputId = "smoother",
                             label = "Add smoother?",
                             value = FALSE
-              ),
-              checkboxGroupInput(inputId = "domainShow",
+                ),
+
+                checkboxGroupInput(inputId = "domainShow",
                                  label = "Show NHS and other domain
                                           (defaults to all)?",
                                  choices = list("NHS users" = "NHS",
                                                 "Other" = "Other")
-              ),
-              radioButtons(inputId = "outputType",
+                ),
+
+                radioButtons(inputId = "outputType",
                            label = "Output required",
                            choices = list("Visitors" = "visitors",
                                           "Bounce rate" = "bounceRate",
-                                          "Time on site" = "timeOnSite")
-              ),
+                                          "Time on site" = "timeOnSite"))
+                ),
             
-            mainPanel(
+              mainPanel(
                 tabsetPanel(
                   tabPanel("Summary", textOutput("textDisplay")),
                   tabPanel("Monthly figures", plotOutput("monthGraph")),
                   tabPanel("Hours figures", plotOutput("hourGraph"))
                 )
-            )
-          ))
+              )
+            ))
 
-server       
