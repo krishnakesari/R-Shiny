@@ -1,6 +1,8 @@
 # R-Shiny
 1. Minimal APP
 Minimal APP shows how to build UI and server components to build basic app 
+* UI
+* Server
 2. Analytics APP
 Analytics APP shows how to build various widgets in Shiny Application 
 Widgets:
