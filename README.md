@@ -5,7 +5,7 @@ Minimal APP shows how to build UI and server components to build basic app
 Analytics APP shows how to build various widgets in Shiny Application 
 Widgets:
 * Date Input
-b. Slider
-c. Check Box
-d. Check Box Group
-e. Radio Buttons
+* Slider
+* Check Box
+* Check Box Group
+* Radio Buttons
