@@ -73,6 +73,9 @@ server <- shinyServer(function(input, output) {
       analytics
     })
 
+    output$monthGraph <- renderPlot({
+            graphData <- ddply(passData(), .(Domain, Date), numcolwise(sum))
+    })
 
 
 })
