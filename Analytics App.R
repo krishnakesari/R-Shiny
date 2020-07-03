@@ -75,6 +75,19 @@ server <- shinyServer(function(input, output) {
 
     output$monthGraph <- renderPlot({
             graphData <- ddply(passData(), .(Domain, Date), numcolwise(sum))
+        
+        if(input$outputType == "visitors"){
+          theGraph <- ggplot(graphData, aes(x = Date, y = visitors, group = Domain, color = Domain)) +
+                      geom_line() +
+                      ylab ("Unique visitors")
+        }
+
+        if(input$outputType == "bounceRate") {
+          theGraph <- ggplot(graphData, aes(x = Date, y = bounces/visits * 100, group = Domain,
+                      colour = Domain)) +
+                      geom_line() + ylab("Bounce rate %")
+        }
+
     })
 
 
