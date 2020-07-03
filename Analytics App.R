@@ -53,3 +53,17 @@ ui <- shinyUI(pageWithSidebar(
               )
             ))
 
+load("Analytics.Rdata")
+
+server <- shinyServer(function(input, output) {
+
+    passData <- reactive({
+      analytics <- analytics[analytics$Date %in%
+                      seq.Date(input$dateRange[1],
+                               input$dateRange[2], by = "days"),]
+    })
+
+
+})
+
+shinyApp(ui, server)
