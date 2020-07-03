@@ -75,6 +75,37 @@ server <- shinyServer(function(input, output) {
 
     output$monthGraph <- renderPlot({
             graphData <- ddply(passData(), .(Domain, Date), numcolwise(sum))
+        
+        if(input$outputType == "visitors"){
+          theGraph <- ggplot(graphData, aes(x = Date, y = visitors, group = Domain, color = Domain)) +
+                      geom_line() +
+                      ylab ("Unique visitors")
+        }
+
+        if(input$outputType == "bounceRate") {
+          theGraph <- ggplot(graphData, aes(x = Date, y = bounces /visits * 100, group = Domain,
+                      colour = Domain)) +
+                      geom_line() + ylab("Bounce rate %")
+        }
+
+        if(input$outputType == "timeOnSite") {
+          theGraph <- ggplot(graphData, aes(x = Date, y = timeOnSite /visits, group = Domain,
+                      colour = Domain)) +
+                      geom_line() + ylab("Average time on site")
+        }
+
+        if(input$smoother){
+          theGraph <- theGraph + geom_smooth()
+        }
+        print(theGraph)
+    })
+
+    output$textDisplay <- renderText({
+            paste(
+              length(seq.Date(input$dateRange[1], input$dateRange[2], by = "days")),
+              " days are summarized. There were", sum(passData()$visitors),
+              "visitors in this time period."
+            )
     })
 
 
