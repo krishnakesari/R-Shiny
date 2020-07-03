@@ -61,6 +61,20 @@ server <- shinyServer(function(input, output) {
       analytics <- analytics[analytics$Date %in%
                       seq.Date(input$dateRange[1],
                                input$dateRange[2], by = "days"),]
+      
+      analytics <- analytics[analytics$Hour %in%
+                      as.numeric(input$minimumTime):
+                      as.numeric(input$maximumTime),]
+      
+      if(class(input$domainShow)=="character") {
+        analytics <- analytics[analytics$Domain %in%
+                               unlist(input$domainShow),]
+      }
+      analytics
+    })
+
+    output$monthGraph <- renderPlot({
+            graphData <- ddply(passData(), .(Domain, Date), numcolwise(sum))
     })
 
 
