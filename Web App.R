@@ -1,4 +1,5 @@
 library(shiny)
+library(ggplot2)
 
 ui <- shinyUI(pageWithSidebar(
                 headerPanel("Text area"),
@@ -15,3 +16,4 @@ ui <- shinyUI(pageWithSidebar(
                     htmlOutput("outputLink")
                 )
             ))
+
