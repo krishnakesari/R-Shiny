@@ -11,3 +11,8 @@ Widgets:
 * Check Box
 * Check Box Group
 * Radio Buttons
+## Web APP
+Web APP shows the integration of HTML and Radio Buttons along with Data Manipulation in shiny 
+* HTML Output
+* render Plot
+* render text
