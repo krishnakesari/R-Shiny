@@ -12,19 +12,19 @@ ui <- shinyUI(pageWithSidebar(
 
             mainPanel(
                 tags$canvas(id="myCanvas", width="500", height="250"),
-                includeHTML("textSend.js"),
+                includeHTML("JS App.js"),
                 textOutput("textDisplay")
             )
         ))
 
 
-server <- shinyServer(function(input, output)) {
+server <- shinyServer(function(input, output) {
                 output$textDisplay <- renderText({
                     paste0("You said '", input$textArea,
                     "'. There are ", nchar(input$textArea),
                     " characters in this."
                     )
                 })
-            }
+              })
 
 shinyApp(ui, server)
