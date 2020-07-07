@@ -1,6 +1,8 @@
 library(shiny)
 
-shinyServer(function(input, ouput){
+ui <- shiny::includeHTML("jQuery App.html")
+
+server <- shinyServer(function(input, ouput){
     output$dataset <- renderTable({
         theData = switch(input$dataset,
                         "iris" = iris,
@@ -23,3 +25,5 @@ shinyServer(function(input, ouput){
                     "CO2" = CO2)), " rows")
     })
 })
+
+shinyApp(ui, server)
