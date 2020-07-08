@@ -16,3 +16,6 @@ Web APP shows the integration of HTML and Radio Buttons along with Data Manipula
 * HTML Output
 * render Plot
 * render text
+## Java Script APP
+## JQuery APP
+## Using Reactivity Controls
