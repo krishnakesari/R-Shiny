@@ -16,8 +16,3 @@ tabsetPanel(id = "theTabs",
                     plotOutput("hourGraph"),
                     value = "hourly")
             )
-
-            
-
-
-
