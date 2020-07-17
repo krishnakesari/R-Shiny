@@ -16,3 +16,22 @@ tabsetPanel(id = "theTabs",
                     plotOutput("hourGraph"),
                     value = "hourly")
             )
+
+passData <- reactive({
+        if(input$theTabs != "hourly") {
+                analytics <- analytics[analytics$Date %in%
+                               seq.Date(input$dateRange[1], input$dateRange[2],
+                               by = "days"),]
+        }
+        if(input$theTabs != "monthly") {
+                analytics <- analytics[analytics$Hour %in%
+                                as.numeric(input$minimumTime) :
+                                as.numeric(input$maximumTime),]
+        }
+        analytics <- analytics[analytics$Domain %in%
+                        unlist(input$domainShow),]
+        analytics
+})
+
+
+# Building a complex conditional panel
